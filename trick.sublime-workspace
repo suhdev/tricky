@@ -1,0 +1,351 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Session",
+				"Session-flash	Session-flash"
+			],
+			[
+				"Auth",
+				"Auth-logout	Auth-logout"
+			],
+			[
+				"Reposito",
+				"RepositoryInterface"
+			],
+			[
+				"Reposit",
+				"RepositoryInterface"
+			],
+			[
+				"subti",
+				"subtitle-box-margin"
+			],
+			[
+				"subtitle-box-pad",
+				"subtitle-box-padding-small"
+			],
+			[
+				"name-box-padd",
+				"name-box-padding-small"
+			],
+			[
+				"name-box-font-",
+				"name-box-title-font-size-small"
+			],
+			[
+				"testimonial-content-name-",
+				"testimonial-content-name-font-size"
+			],
+			[
+				"testimonial-co",
+				"testimonial-content-font-size"
+			],
+			[
+				"sb-link",
+				"sb-link-hover-color"
+			],
+			[
+				"sb-box-pa",
+				"sb-box-paragraph-margin"
+			],
+			[
+				"sb-box",
+				"sb-box-content-font-size"
+			],
+			[
+				"sb-box-title",
+				"sb-box-title-color"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "/**\n * @module tricky\n * @description Library\n */\nvar tricky = (function(){\n\n\n  /**\n   * @member module:tricky~internal\n   * @description holds the internal variables of the library\n   * @type {object}\n   */\n  var _I = {};\n  /**\n   * @property module:tricky~internal.r\n   * @description binding regular expression\n   * @kind property\n   * @type {RegExp}\n   */\n  _I.r = /([a-zA-Z\\[\\]\\-]+) ?(<?~>?) ?([a-zA-Z$]+[a-zA-Z0-9]*) ?((~>) ?([a-zA-Z$]+[a-zA-Z0-9]*))?/;\n  /**\n  * @property module:tricky~internal.c\n  * @description camel case extraction regular expression\n  * @kind property\n  * @type {RegExp}\n  */\n  _I.f = /(^[a-z]|[A-Z])[a-z]+/g;\n\n  function EventsManager(){\n\n  }\n\n  EventsManager.prototype = {\n    listen:function(evtName,){\n\n    }\n  };\n\n  _I.classData = {};\n  _I.waiting = {};\n\n  _I.instanciated = {};\n\n  function register(type,name,fn,proto,rq){\n    _I.classData[name] = fn;\n    var k = _I.classData[name];\n    k.type = type;\n    k.name = name;\n    k.prototype = proto;\n    k.inject = requires(rq);\n  }\n\n  function requires(list){\n    var l = [];\n    if (list && list.length > 0){\n      if (_I.instanciated[list[i]]){\n        l.push(_I.instanciated[list[i]]);\n      }else if(_I.classData[list[i]]){\n        _I.instanciated[list[i]] = _I.instanciated[list[i]];\n        l.push(_I.classData[list[i]])\n      }\n    }\n  }\n\n  var _appData = {};  //stores types\n  var _plugins = {};\n  var _diSingletons = {};\n  var _diInstances = [];\n\n  var di = {\n    register:function(type,name,fn,proto,requires){\n      _appData[name] = ;\n      _appData[name] = fn;\n      _appData[name].type = type;\n      _appData[name].prototype = proto;\n      _appData[name].inject = this.require(requires);\n    },\n    refresh:function(){\n\n    },\n    unregister:function(name){\n\n    },\n    get:function(name){\n      var o = _appData[name];\n      if (o.type == 'controller' ||\n          o.type == 'directive')\n      var a = Object.create(_appData[name].prototype || {});\n      _diData[name].apply(a,req);\n\n    },\n    getSingleton:function(name){\n      var o = _appData[name];\n      var a = Object.create(_appData[name].prototype || {});\n      _diData[name].apply(a,req);\n    },\n\n    require:function(list){\n      var l = [];\n      for(var i=0;i<list.length;i++){\n\n        l.push(_diSingletons[list[i]] ||\n          (_diSingletons[list[i]] = this.getSingleton(list[i])));\n      }\n      return l;\n    },\n\n  };\n\n\n\n\n\n  var _directives = {};\n\n  var _activeDirectives = {};\n\n  var _activeInjectables = {};\n\n  var _injectables = {};\n\n  var _objects = {};\n\n  var _app = {};\n\n  function inject(){\n\n  };\n\n  function createInjectable(type,name){\n    var l = _directives;\n    var s = _activeDirectives;\n    if (type === 'injectables'){\n      l = _injectables;\n      s = _activeInjectables;\n    }\n\n    var list = [];\n\n    for(var j=0;j<l[name].inject.length;j++){\n      var obj = _objects[l[name].inject[j]] ||\n      createInjectable(l[name].inject[j]);\n      list.push(obj);\n    }\n\n    var o = Object.create(l[name].prototype || {});\n    l[name].apply(o,list);\n\n    //s[]\n  }\n\n  function run(){\n    for(var k in _directives){\n      $('['+k+']').each(function(){\n\n\n        this.__t = createInjectable('directive',k);\n      });\n      _app[k] = _app[k] || {};\n\n    }\n  };\n  function digest(){\n\n  };\n  var _trk = {\n    plugin:function(name,fn,p,i){\n      var o = Object.create(p||{});\n      var req = di.requires(i);\n      _plugins[name] = fn.apply(o,req);\n    },\n    directive:function(name,fn,p,i){\n      this._injectable('directive',\n        name,fn,p,i);\n    },\n    service:function(name,fn,p,i){\n      this._injectable('service',\n      name,fn,p,i);\n    },\n    controller:function(name,fn,p,i){\n      this._injectable('controller',\n      name,fn,p,i);\n    },\n    _injectable:function(type,name,fn,p,i){\n      _appClasses[name] = fn;\n      _appClasses[name].prototype = p;\n      _appClasses[name].type = type;\n      _appClasses[name].inject = i;\n    },\n\n  };\n\n  return _trk;\n\n})();\n\ntricky.injectable('Element',function(){\n  return\n});\n\ntricky.directive('tr-controller',function($t,$E){\n\n},['Element']);\n\ntricky.plugin('Mock',function(I,T){\n  T.mock.internal = I;\n  T.mock.di = di;\n},{},['Internal','Tricky']);\n",
+			"file": "scripts/tricky.js",
+			"file_size": 4111,
+			"file_write_time": 130609798400000000,
+			"settings":
+			{
+				"buffer_size": 4175,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/Compass/Compass.sublime-build",
+	"command_palette":
+	{
+		"height": 107.0,
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"grunt",
+				"Grunt"
+			],
+			[
+				"phpunit",
+				"Remote PHPUnit: Run tests in current file"
+			],
+			[
+				"php",
+				"PHPUnit: Run"
+			],
+			[
+				"testUnit",
+				"Snippet: class-xxTest-extends-PHPUnit_Framework_TestCase"
+			]
+		],
+		"width": 746.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/suhail/Sites/tricky.dev",
+		"/Users/suhail/Sites/tricky.dev/scripts"
+	],
+	"file_history":
+	[
+		"/Users/suhail/Sites/my.lon/app/views/signup.blade.php",
+		"/Users/suhail/Sites/my.lon/app/views/signin.blade.php",
+		"/Users/suhail/Sites/my.lon/app/views/signin/signincontent.blade.php",
+		"/Users/suhail/Sites/my.lon/js/app/system/controllers/registeration.ctrl.js",
+		"/Users/suhail/Library/Application Support/Sublime Text 3/Packages/User/SublimeGrunt.sublime-settings",
+		"/Users/suhail/Library/Application Support/Sublime Text 3/Packages/User/PHPUnit.sublime-settings",
+		"/Users/suhail/Sites/my.lon/app/views/common/head.blade.php",
+		"/Users/suhail/Sites/my.lon/app/views/pages/experience/view.blade.php",
+		"/Users/suhail/Sites/my.lon/public/templates/system/guidebox.template.html",
+		"/Users/suhail/Sites/my.lon/js/app/system/directives/guidebox.directive.js",
+		"/Users/suhail/Sites/my.lon/app/controllers/GuideCtrl.php",
+		"/Users/suhail/Sites/my.lon/app/tests/GuideCtrlTest.php",
+		"/Users/suhail/Sites/my.lon/public/sass/partials/_guidebox.scss",
+		"/Users/suhail/Sites/my.lon/Gruntfile.js",
+		"/Users/suhail/Sites/my.lon/app/controllers/UserCtrl.php",
+		"/Users/suhail/Sites/my.lon/js/test/test1.js",
+		"/Users/suhail/Sites/my.lon/js/mocks.js",
+		"/Users/suhail/Sites/my.lon/package.json",
+		"/Users/suhail/Sites/my.lon/app/routes.php",
+		"/Users/suhail/Sites/my.lon/app/models/User.php",
+		"/Users/suhail/Sites/my.lon/vendor/laravel/framework/src/Illuminate/Auth/UserInterface.php",
+		"/Users/suhail/Sites/my.lon/app/controllers/SignupController.php",
+		"/Users/suhail/Sites/my.lon/composer.json",
+		"/Users/suhail/Sites/my.lon/vendor/composer/autoload_namespaces.php",
+		"/Users/suhail/Sites/my.lon/app/suhail/MRL/Repositories/RepositoryInterface.php",
+		"/Users/suhail/Sites/my.lon/app/suhail/MRL/Repositories/UserRepository.php",
+		"/Users/suhail/Sites/my.lon/app/suhail/MRL/Repositories/DataRepository.php",
+		"/Users/suhail/Sites/my.lon/app/start/global.php",
+		"/Users/suhail/Sites/my.lon/vendor/composer/ClassLoader.php",
+		"/Users/suhail/Sites/my.lon/vendor/composer/autoload_psr4.php",
+		"/Users/suhail/Sites/my.lon/vendor/composer/autoload_classmap.php",
+		"/Users/suhail/Sites/my.lon/app/suhail/MRL/Repositories/Repository.php",
+		"/Users/suhail/Sites/my.lon/app/suhail/MyRealLondon/Repositories/UserRepository.php",
+		"/Users/suhail/Sites/my.lon/app/suhail/MyRealLondon/Repositories/Repository.php",
+		"/Users/suhail/Sites/my.lon/app/tests/TestCase.php",
+		"/Users/suhail/Sites/my.lon/app/tests/ExampleTest.php",
+		"/Users/suhail/Sites/my.lon/js/app/system/controllers/guidecreator.ctrl.js",
+		"/Users/suhail/Sites/my.lon/js/app/system/controllers/experiencecreator.ctrl.js",
+		"/Users/suhail/Sites/essence/wp-content/themes/twentyfourteen/js/interactivemap.js",
+		"/Users/suhail/Sites/essence/wp-content/themes/twentyfourteen/sass/partials/_interactivemap.scss",
+		"/Users/suhail/Sites/essence/wp-content/themes/twentyfourteen/sass/partials/homepage/_slogan-box.scss",
+		"/Users/suhail/Sites/essence/wp-content/themes/twentyfourteen/sass/partials/homepage/_homepage.scss",
+		"/Users/suhail/Sites/essence/wp-content/themes/twentyfourteen/sass/partials/homepage/_testimonial.scss",
+		"/Users/suhail/Sites/essence/wp-content/themes/twentyfourteen/page-templates/home.php",
+		"/Users/suhail/Sites/essence/wp-content/themes/twentyfourteen/sass/partials/homepage/_subtitle-box.scss",
+		"/Users/suhail/Sites/essence/wp-content/themes/twentyfourteen/sass/partials/homepage/_name-box.scss",
+		"/Users/suhail/Sites/essence/wp-content/themes/twentyfourteen/sass/screen.scss",
+		"/Users/suhail/Sites/essence/wp-content/themes/twentyfourteen/sass/partials/_pagestyle.scss",
+		"/Users/suhail/Sites/essence/wp-content/themes/twentyfourteen/header.php",
+		"/Users/suhail/Sites/essence/wp-content/themes/twentyfourteen/sass/partials/_variables.scss",
+		"/Users/suhail/Documents/test.php"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"internal",
+			"internal.",
+			"internal",
+			"this",
+			"user",
+			"$user",
+			"app",
+			"MyRealLondon",
+			"$faq",
+			"faqModel",
+			"mapOverlay",
+			"elem",
+			"overlay",
+			"ector",
+			"Selector",
+			";",
+			"gray"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "scripts/tricky.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4175,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								742,
+								742
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 260.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 300.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "trick.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 213.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

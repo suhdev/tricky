@@ -4,3 +4,8 @@
 127.0.0.1 - - [19/Nov/2014:00:17:55 +0000] "GET /icons/dir.gif HTTP/1.1" 200 225 "http://tricky.dev/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36"
 127.0.0.1 - - [19/Nov/2014:00:17:56 +0000] "GET /icons/forward.gif HTTP/1.1" 200 219 "http://tricky.dev/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36"
 127.0.0.1 - - [19/Nov/2014:00:17:56 +0000] "GET /favicon.ico HTTP/1.1" 404 209 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36"
+127.0.0.1 - - [06/May/2015:11:44:01 +0100] "GET / HTTP/1.1" 200 1885 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_90_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36"
+127.0.0.1 - - [06/May/2015:11:44:01 +0100] "GET /icons/script.gif HTTP/1.1" 200 242 "http://tricky.dev/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_90_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36"
+127.0.0.1 - - [06/May/2015:11:44:01 +0100] "GET /icons/dir.gif HTTP/1.1" 200 225 "http://tricky.dev/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_90_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36"
+127.0.0.1 - - [06/May/2015:11:44:01 +0100] "GET /icons/forward.gif HTTP/1.1" 200 219 "http://tricky.dev/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_90_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36"
+127.0.0.1 - - [06/May/2015:11:44:01 +0100] "GET /favicon.ico HTTP/1.1" 404 209 "http://tricky.dev/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_90_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36"
